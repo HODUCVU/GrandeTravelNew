@@ -1,0 +1,27 @@
+﻿@model GrandeTravel.ViewModels.SearchIndexViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="landing-header">
+    <h1>Welcome to Grande Travel</h1>
+
+    <form class="form-inline" id="landingSearch" asp-controller="TravelPackage" asp-action="Index">
+
+        <input class="autocomplete-suggestions form-control" id="autocomplete" type="text" name="searchString" placeholder="Search Here..">
+
+        <input type="submit" class="btn btn-success" value="Search" />
+    </form>
+</div>
+<ul class="slideshow">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    var packages = @Html.Raw(Model.list);
+</script>
+

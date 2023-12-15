@@ -1,0 +1,45 @@
+﻿@model GrandeTravel.ViewModels.CreateTravelPackageViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Create Travel Package</h2>
+
+            <form asp-controller="TravelPackage" asp-action="Create" method="post" role="form" enctype="multipart/form-data" asp-anti-forgery="true">
+                <div class="form-group">
+                    <label asp-for="PackageName"></label>
+                    <input asp-for="PackageName" class="form-control">
+                    <span class="text-danger" asp-validation-for="PackageName"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhotoLocation"></label>
+                    <input type="hidden" asp-for="PhotoLocation" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label></label>
+                    <input type="file" name="PhotoLocation" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Location"></label>
+                    <input asp-for="Location" class="form-control">
+                    <span class="text-danger" asp-validation-for="Location"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PackageDescription"></label>
+                    <input asp-for="PackageDescription" class="form-control">
+                    <span class="text-danger" asp-validation-for="PackageDescription"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PackagePrice"></label>
+                    <input asp-for="PackagePrice" class="form-control">
+                    <span class="text-danger" asp-validation-for="PackagePrice"></span>
+                </div>
+                <button type="submit" class="btn btn-default">Save</button>
+            </form>
+        </div>
+    </div>
+</div>

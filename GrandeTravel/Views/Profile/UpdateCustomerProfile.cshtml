@@ -1,0 +1,44 @@
+﻿@model GrandeTravel.ViewModels.UpdateCustomerProfileViewModel
+@{
+    ViewData["Title"] = "UpdateCustomerProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-6  col-md-8  col-sm-9 col-xs-12">
+            <h2>Update Details</h2>
+            <form class="form-horizontal" asp-action="UpdateCustomerProfile" asp-controller="Profile" method="post" role="form" asp-anti-forgery="true">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" asp-for="FirstName"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="FirstName" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" asp-for="LastName"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="LastName" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" asp-for="Phone"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Phone" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Phone"></span>
+                    </div>
+                </div>
+                <div class="col-sm-offset-3 col-sm-9">
+                    <button type="submit" class="btn btn-default">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+

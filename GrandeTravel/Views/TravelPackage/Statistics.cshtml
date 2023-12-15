@@ -1,0 +1,193 @@
+﻿@model GrandeTravel.ViewModels.StatisticsViewModel
+@{
+    ViewData["Title"] = "Statistics";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/lib/Chart.js/dist/Chart.min.js"></script>
+<script>
+
+    var data = {
+        labels: [
+    @Html.Raw(@Model.Labels)
+        ],
+        datasets: [
+            {
+                data: [@Model.Data],
+                backgroundColor: [
+                    "#446384",
+                    "#36A2EB",
+                    "#77CE56",
+                    "#CCFCE6",
+                    "#1133FF",
+                    "#9966FF",
+                    "#CC8811",
+                    "#1199CC"
+                ],
+                hoverBackgroundColor: [
+                    "#446384",
+                    "#36A2EB",
+                    "#77CE56",
+                    "#CCFCE6",
+                    "#1133FF",
+                    "#9966FF",
+                    "#CC8811",
+                    "#1199CC"
+                ]
+            }]
+    };
+    var bardata = {
+        labels: [
+    @Html.Raw(@Model.Labels)
+        ],
+        datasets: [
+            {
+                data: [@Model.AmountBookings],
+                label: "Booking dataset",
+                backgroundColor: [
+                    "#446384",
+                    "#36A2EB",
+                    "#77CE56",
+                    "#CCFCE6",
+                    "#1133FF",
+                    "#9966FF",
+                    "#CC8811",
+                    "#1199CC"
+                ],
+                borderColor: [
+                    "#446384",
+                    "#36A2EB",
+                    "#77CE56",
+                    "#CCFCE6",
+                    "#1133FF",
+                    "#9966FF",
+                    "#CC8811",
+                    "#1199CC"
+                ]
+            }]
+    };
+
+
+
+
+    window.onload = function () {
+        var ctx1 = document.getElementById("Piecanvas").getContext("2d");
+        window.myBar = new Chart(ctx1,
+            {
+                type: 'pie',
+                data: data,
+                options:
+                {
+                    title:
+                    {
+                        display: true,
+                        text: "Total Booking Sales"
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+        var ctx2 = document.getElementById("Barcanvas").getContext("2d");
+        window.myBar = new Chart(ctx2,
+            {
+                type: 'horizontalBar',
+                data: bardata,
+                options:
+                {
+                    title:
+                    {
+                        display: true,
+                        text: "Total Amount of Bookings"
+                    },
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                        ,
+                        responsive: true,
+                        maintainAspectRatio: true
+                    }
+                }
+            });
+        var ctx1 = document.getElementById("Piecanvas2").getContext("2d");
+        window.myBar = new Chart(ctx1,
+            {
+                type: 'pie',
+                data: bardata,
+                options:
+                {
+                    title:
+                    {
+                        display: true,
+                        text: "Total Amount of Bookings"
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+        var ctx2 = document.getElementById("Barcanvas2").getContext("2d");
+        window.myBar = new Chart(ctx2,
+            {
+                type: 'horizontalBar',
+                data: data,
+                options:
+                {
+                    title:
+                    {
+                        display: true,
+                        text: "Total Booking Sales"
+                    },
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                        ,
+                        responsive: true,
+                        maintainAspectRatio: true
+                    }
+                }
+            });
+    }
+
+
+
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-1 col-md-5 col-sm-6">
+            <div style="text-align: center">
+                <h2>Total Sales In $</h2>
+                <canvas id="Piecanvas"></canvas>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-lg-offset-1 col-md-5 col-sm-6">
+            <div class="mobile-hide" style="text-align: center">
+                <h2>Total Sales In $</h2>
+                <canvas id="Barcanvas2"></canvas>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-1 col-md-5 col-sm-6">
+            <div style="text-align: center">
+                <h2>Total Amount of Bookings</h2>
+                <canvas id="Piecanvas2"></canvas>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-lg-offset-1 col-md-5 col-sm-6">
+            <div class="mobile-hide" style="text-align: center">
+                <h2>Total Amount of Bookings</h2>
+                <canvas id="Barcanvas"></canvas>
+
+            </div>
+        </div>
+    </div>
+</div>
+

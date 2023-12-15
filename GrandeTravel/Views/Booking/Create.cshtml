@@ -1,0 +1,40 @@
+﻿@model GrandeTravel.ViewModels.CreateBookingViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Book Travel Package</h2>
+            <form asp-controller="Booking" asp-action="Create" method="post" role="form" asp-anti-forgery="true">
+                <div class="form-group">
+                    <label asp-for="BookingDate"></label>
+                    <input asp-for="BookingDate" value="@DateTime.Today" class="form-control">
+                    <span class="text-danger" asp-validation-for="BookingDate"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="People"></label>
+                    <input asp-for="People" class="form-control">
+                    <span class="text-danger" asp-validation-for="People"></span>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>Total Price $</label><span class="text-success" id="totalCost"></span>
+                    </div>
+                    <input type="hidden" asp-for="TravelPackageName" />
+                </div>
+                <div>
+                    <input type="hidden" asp-for="TravelPackageId" />
+                </div>
+                <button type="submit" class="btn btn-default">Book</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    var price = @Model.TotalCost;
+</script>
+

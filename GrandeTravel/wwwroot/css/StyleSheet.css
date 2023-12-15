@@ -1,0 +1,559 @@
+﻿* {
+margin: 0;
+padding: 0;
+}
+/*Landing Css*/
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  margin-top: 40vh;
+  
+}
+
+#landingNav{
+    z-index: 1;
+ 
+}
+
+
+
+#landingSearch{
+    margin-top: 50px;
+}
+
+.autocomplete-suggestions { 
+    width:auto;
+    border: 1px solid #999; 
+    background: #FFF; 
+    overflow: auto; 
+    z-index:10
+    
+
+}
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+
+
+
+
+#landing-header h1 {
+  font-family: 'Titan One';
+  color: #fff;
+  font-size: 51px;
+  margin-bottom: 20px;
+  
+}
+
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height:100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 20s linear infinite; 
+}
+
+    .slideshow li:nth-child(1) {
+        background-image: url('../media/australia.jpg');
+    }
+    .slideshow li:nth-child(2) {
+        background-image: url('../media/ayersrock.jpg');
+        animation-delay: 5s;
+    }
+    .slideshow li:nth-child(3) {
+        background-image: url('../media/littleisland.jpg');
+        animation-delay: 10s;
+    }
+    .slideshow li:nth-child(4) {
+        background-image: url('../media/sydneyharbour.jpg');
+        animation-delay: 15s;
+    }
+
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+/*NavBar Css*/
+.navbar{
+    margin-bottom:0px;
+}
+
+
+#brandLogo{
+    font-family: 'Titan One';
+    color:forestgreen;
+   
+}
+
+ul.nav > li{
+    font-family: 'Titan One';
+}
+
+ul.nav > li > a:hover{
+    color:forestgreen;
+     text-shadow: 6px 6px 6px #aaa;
+}
+
+#brandLogo:hover{
+    text-shadow: 6px 6px 6px #aaa;
+   
+}
+.dropdown-menu > li > a{
+    font-size:12px;
+}
+
+#logoutBtn{
+        -webkit-appearance:none;
+        line-height:20px;
+        background-color: #f8f8f8;
+        border:none;
+        
+}
+#logoutBtn:hover{
+    text-shadow: 6px 6px 6px #aaa;
+}
+
+/*Footer Css*/
+
+
+
+footer {
+	background:#e7e7e7;
+	width:100%;
+	
+	position:relative;
+    margin-top:0px;
+	
+}
+address{
+    margin-top: 15px;
+    font-size:x-small;
+}
+
+
+#JoeContact{
+    margin-top: 15px;
+    font-size:x-small;
+    
+}
+
+#social{
+    margin-top:30px;
+	text-align: center;
+}
+
+.socialHover{
+	font-size: 26px;
+	padding: 3px 10px ;
+	
+
+}
+.socialHover:hover{
+    font-size: 30px;
+    padding: 0 8px;
+    text-shadow: 6px 6px 6px #aaa;
+}
+
+/*About Page*/
+
+#aboutContent{
+    position: relative;
+    margin-top:300px;
+    background-color:white;
+}
+
+#aboutImg{
+    width: 100%;
+    height: auto;
+    
+}
+
+#aboutH2{
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    text-align: center;
+    
+}
+
+.titanHeader{
+    font-family: "Titan One";
+    margin-bottom: 20px;
+}
+
+
+
+
+/*Contact Page*/
+#contactContent{
+    position: relative;
+    margin-top:300px;
+    background-color:white;
+}
+
+
+
+.ContactUsBtn{
+    font-size:36px;
+    color:white;
+}
+
+.socialMedia{
+    border-radius: 10px;    
+    background-color:rgba(29, 96, 255,0.6);
+}
+
+#facebook{
+    border-radius: 10px;
+    background-color:#415ca9;
+    
+}
+
+#instagram1{
+    color: #30104c;
+    background-color:floralwhite;
+    border:solid 1px #30104c;
+}
+
+#instagram1>i {
+    color: #30104c;
+}
+
+/*Update details travel package*/
+
+.photoLocation{
+    max-height: 150px;
+    max-width: 200px;
+    height: auto;
+    width: auto;
+}
+
+
+/*Index TravelPackage*/
+.IndexThumb{
+    min-height:165px; 
+    max-height:216px ;  
+    width:100%; 
+    
+    
+}
+
+.packageDsp{
+    min-height: 460px;
+}
+
+#packageHeader{
+     color: steelblue; font-size: 38px; font-family: 'Titan One'; padding-bottom: 10px;
+}
+
+.thumbnail{
+   box-shadow: 0 3px 15px rgba(103,122,141,0.17);
+}
+
+#bgIndex {
+    width: 100%;
+    height: 350px;
+    z-index: -1;
+    position: fixed;
+    background-image: url('../media/Rockybeach.jpg');
+    background-size:cover;
+    top: 0;
+    
+}
+
+#SearchForm{
+    
+    margin: 120px auto 0px auto;
+}
+
+
+#IndexContent{
+    margin-top:100px;
+    background-color:rgb(243,243,243);
+    padding-bottom: 200px;
+  
+}
+
+.localIcon{
+    font-size:20px;
+    color:orange;
+}
+
+.thumbnail .price{
+    display: block;
+    position: absolute;
+    top: 41px;
+    right: 15px;
+    height: 32px;
+    padding: 0 10px;
+    line-height: 32px;
+    font-size: 18px;
+    text-decoration: none;
+     color: #37621f;
+    text-shadow: 1px 1px 0px rgba(255,255,255, .2); 
+    background: #82d344;
+    background: -moz-linear-gradient(top,  #82d344 0%, #51af34 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#82d344), color-stop(100%,#51af34));
+    background: -webkit-linear-gradient(top,  #82d344 0%,#51af34 100%);
+    background: -o-linear-gradient(top,  #82d344 0%,#51af34 100%);
+    background: -ms-linear-gradient(top,  #82d344 0%,#51af34 100%);
+    background: linear-gradient(to bottom,  #82d344 0%,#51af34 100%);
+
+}
+
+.thumbnail .price:before,
+.thumbnail .price:after{
+    display: block;
+    position: absolute;
+    content: '';
+}
+
+    .thumbnail .price:before {
+        width: 8px;
+        height: 32px;
+        top: 0;
+        left: -8px;
+        background: url(../media/badge.png) no-repeat;
+        
+    }
+ 
+
+.thumbnail .price:after {
+    width: 0;
+    height: 0;
+    bottom: -5px;
+    right: 0;
+    border-bottom: 5px solid transparent;
+}
+ 
+.thumbnail .price:after { background-position: 0 0; }
+
+.thumbnail .price:after { border-left: 5px solid #1c5d40; }
+
+
+
+
+
+
+
+/*Details Page*/
+
+#detailsHead {
+   
+    font-size:56px;
+}
+#detailsContainer{
+    margin-top:250px;
+    background-color:white;
+    box-shadow: 0 3px 15px rgba(103,122,141,0.17);
+    
+}
+#detailImg{
+    margin-top:50px;
+}
+
+.PackageImg{
+    min-height:100%;
+    display: block;
+    margin: auto auto;
+}
+.carouselImg{
+    height: 400px;
+    box-shadow: 0 3px 15px rgba(103,122,141,0.17);
+}
+#price{
+    font-size:30px;
+}
+#panelImage{
+    padding:0px;
+}
+#SocialSharing{
+    
+    font-size:16px;
+}
+
+.ShareBtns{
+    margin: 10px 5px;
+    font-size: 30px;
+}
+
+.detailStars{
+    text-shadow: 2px 2px 7px grey;
+    font-size: 16px;
+    color:yellow;
+}
+#BookBtn{
+    font-size:20px;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+#commentList li{
+    list-style:none;
+    
+}
+#ReviewList{
+    width:200px;
+    margin:auto;
+    
+}
+
+
+#map {
+   width: 100%;
+   height: 400px;
+   background-color: grey;
+ }
+
+
+/*Create Feedback Page*/
+
+.ratings {
+    color: white;
+    text-shadow: 2px 2px 7px grey;
+    font-size: 28px;
+}
+
+.ratings:hover{
+    color:yellow;
+}
+
+.ratings.active{
+    color:yellow;
+}
+.ratings.secondary-active{
+    color:yellow;
+}
+.ratings.selected-active{
+    color:yellow;
+}
+.ratings.selected-secondary-active{
+    color:yellow;
+}
+input[type="radio"]{
+    display:none;
+}
+
+
+@media(max-width:1440px){
+    .IndexThumb{
+    min-height: 164px;
+    max-height: 284px;   
+    }
+}
+
+@media(max-width:991px){
+    .IndexThumb{
+    min-height: 215px;
+    max-height: 215px;   
+    }
+    
+}
+
+@media(max-width:768px) {
+    .IndexThumb{
+    max-height : 305px;   
+    width:100%;
+    }
+   
+}
+
+
+
+
+
+@media(max-width:768px){
+     #autocomplete{
+         
+        margin:auto;
+        width:100%;
+}
+     #landingSearch{
+         width:300px;
+         margin:auto;
+     }
+    #landingSearch>.btn{
+    margin-top: 10px;
+    
+    }
+    .mobile-hide{
+        display:none;
+    }
+    #social{
+    margin-top:10px;
+	
+}
+     .socialMedia{
+        display:none;
+    }
+      #IndexContent{
+       margin-top:0px;
+   }
+     
+}
+
+
+@media(max-width:450px){
+    #autocomplete{
+        width:100%;
+        margin:auto;
+}
+
+    address{
+        margin-top: 5px;
+        }
+    i.fa{
+        font-size:14px;
+        padding: 1px 3px;
+    }
+    .socialHover:hover{
+    font-size: 14px;
+    padding: 1px 3px;
+    text-shadow: 3px 3px 3px #aaa;
+    }
+   #landing-header{
+        width: 100%;
+        margin:auto;
+   }
+   .carouselImg{
+    height: 200px;
+}
+  
+}

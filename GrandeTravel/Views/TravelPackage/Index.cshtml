@@ -1,0 +1,81 @@
+﻿@model GrandeTravel.ViewModels.DisplayAllTravelPackagesViewModel
+@using GrandeTravel.AppCode
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="bgIndex" class="container"> </div>
+
+<div class="container">
+
+
+    <form class="form-inline text-center" asp-controller="TravelPackage" asp-action="Index" id="SearchForm">
+        <input id="autocomplete" type="text" class="form-control autocomplete-suggestions" name="searchString" placeholder="Search Here..">
+        <input type="number" class="form-control" name="minPrice" placeholder="Min Price">
+        <input type="number" class="form-control" name="maxPrice" placeholder="Max Price">
+        <input type="submit" class="btn btn-default" value="Search" />
+    </form>
+
+
+</div>
+<div class="container-fluid" id="IndexContent">
+
+    <h2 class="text-center text-uppercase" id="packageHeader">Our Packages</h2>
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            @{
+                int count = 1;
+            }
+            @foreach (var item in Model.TravelPackageList)
+            {
+                if (count % 4 == 0)
+                {
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="thumbnail text-center packageDsp">
+                                <a asp-controller="TravelPackage" asp-action="Details" asp-route-id="@item.TravelPackageId"><img src="~/@item.PhotoLocation" class="IndexThumb" /></a>
+                                <a asp-controller="TravelPackage" asp-action="Details" asp-route-id="@item.TravelPackageId" class="price"><strong><em>$@item.PackagePrice</em></strong></a>
+                                <div class="caption">
+                                    <h3 class="text-success"><strong>@item.PackageName</strong></h3>
+                                    <p><i class="fa fa-map-marker localIcon" aria-hidden="true"></i> <strong>@item.Location</strong></p>
+                                    <p>@item.PackageDescription.Chop(100)</p>
+                                    <p>$@item.PackagePrice</p>
+                                    <p><a asp-controller="TravelPackage" asp-action="Details" asp-route-id="@item.TravelPackageId" class="btn btn-primary" role="button">Details</a> <a asp-controller="Booking" asp-action="Create" asp-route-id="@item.TravelPackageId" class="btn btn-success" role="button">Book</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                else
+                {
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="thumbnail text-center packageDsp">
+                            <a asp-controller="TravelPackage" asp-action="Details" asp-route-id="@item.TravelPackageId"><img src="~/@item.PhotoLocation" class="IndexThumb" /></a>
+                            <a asp-controller="TravelPackage" asp-action="Details" asp-route-id="@item.TravelPackageId" class="price"><strong><em>$@item.PackagePrice</em></strong></a>
+                            <div class="caption">
+                                <h3 class="text-success"><strong>@item.PackageName</strong></h3>
+                                <p><i class="fa fa-map-marker localIcon" aria-hidden="true"></i> <strong>@item.Location</strong></p>
+                                <p>@item.PackageDescription.Chop(100)</p>
+                                <p>$@item.PackagePrice</p>
+                                <p><a asp-controller="TravelPackage" asp-action="Details" asp-route-id="@item.TravelPackageId" class="btn btn-primary" role="button">Details</a> <a asp-controller="Booking" asp-action="Create" asp-route-id="@item.TravelPackageId" class="btn btn-success" role="button">Book</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                count++;
+
+
+            }
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    var packages = @Html.Raw(Model.searchList);
+</script>
+

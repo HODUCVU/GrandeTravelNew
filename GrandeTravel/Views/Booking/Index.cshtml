@@ -1,0 +1,70 @@
+﻿@model GrandeTravel.ViewModels.DisplayAllBookingsViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<h2>Number of Bookings @Model.total</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>Booking Date</th>
+        <th>Package Name</th>
+        <th>Number of People</th>
+        <th>Total Cost</th>
+        <th>Payment Received</th>
+    </tr>
+    @foreach (var item in Model.Bookings)
+    {
+        <tr>
+            <td>@item.BookingDate.ToString("dd/MM/yyyy")</td>
+            <td>@item.TravelPackageName</td>
+            <td>@item.People</td>
+            <td>$@item.TotalCost</td>
+            @if (@item.PaymentReceived == false)
+            {
+                string count = "paypal-button" + item.BookingId;
+                <td>
+                    <span id=@count></span>
+                    <script>
+                        paypal.Button.render({
+
+                            env: 'sandbox', // Or 'sandbox',
+
+                            commit: true, // Show a 'Pay Now' button
+
+                            client: {
+                                sandbox: 'AZ04clTAL66Jn8yXI9amZ8e0YDByVOGwARF8O2KcDmVytFjQMPljq42DJXBeTBQL9wpPAnX0lLnhzYr1'
+
+                            },
+
+                            payment: function (data, actions) {
+                                return actions.payment.create({
+                                    transactions: [
+                                        {
+                                            amount: { total: @item.TotalCost, currency: 'AUD' }
+                                        }
+                                    ]
+                                });
+                            },
+
+                            onAuthorize: function (data, actions) {
+                                return actions.payment.execute().then(function (payment) {
+
+                                    window.location.href = "@Url.Action("PaymentRecieved", "Booking", new { id = item.BookingId })";
+
+                                    // You can now show a confirmation message to the customer
+                                });
+                            }
+                        }, '#paypal-button' + @item.BookingId);
+                    </script>
+                </td>
+            }
+            else
+            {
+                <td>PAID</td>
+            }
+        </tr>
+    }
+</table>
+

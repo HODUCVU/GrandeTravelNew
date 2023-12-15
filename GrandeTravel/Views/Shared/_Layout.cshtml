@@ -1,0 +1,191 @@
+﻿@* @using System.Security.Claims
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GrandeTravel</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GrandeTravel.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GrandeTravel</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - GrandeTravel - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+ *@
+
+    @using System.Security.Claims
+ 
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/CSS/StyleSheet.css" rel="stylesheet" />
+    <link href='//fonts.googleapis.com/css?family=Titan One' rel='stylesheet'>
+    <link href="~/lib/fontawesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/lib/jssocials/dist/jssocials.css" rel="stylesheet" />
+    <link href="~/lib/jssocials/dist/jssocials-theme-classic.css" rel="stylesheet" />
+   
+</head>
+<body>
+    <nav class="navbar navbar-default" id="landingNav">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a id="brandLogo" class="navbar-brand" href="/">Grande Travel &nbsp;<i class="fa fa-plane" style="font-size:larger" aria-hidden="true"></i></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="TravelPackage" asp-action="Index">Search Packages<span class="sr-only">(current)</span></a></li>
+                    <li><a href="~/home/about">About Us</a></li>
+                    <li><a href="~/home/contact">Contact</a></li>                 
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right" >
+                    @if (@User.Identity.IsAuthenticated)
+                    {
+                        <li class="dropdown" >
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                @User.Identity.Name
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li class="dropdown-header">Admin Options</li>
+                                    <li><a asp-area="" asp-controller="Account" asp-action="AddRole">Add Role</a></li>
+                                    <li><a asp-area="" asp-controller="Account" asp-action="RegisterTravelProvider">Add A Travel Provider</a></li>
+                                    <li><a asp-area="" asp-controller="Account" asp-action="TravelProviderList">View All Travel Providers</a></li>
+                                    <li><a asp-area="" asp-controller="Account" asp-action="CustomerList">View All Customers</a></li>
+                                }
+                                @if (User.IsInRole("TravelProvider"))
+                                { 
+                                <li class="dropdown-header">Travel Provider Options</li>
+                                <li><a asp-area="" asp-controller="TravelPackage" asp-action="Create">Add Travel Package</a></li>
+                                <li><a asp-area="" asp-controller="Profile" asp-action="UpdateProviderProfile">Update Profile</a></li>
+                                <li><a asp-area="" asp-controller="TravelPackage" asp-action="Statistics">Statistics</a></li>
+
+
+                                }                             
+                                @if (User.IsInRole("Customer"))
+                                {
+                                    <li class="dropdown-header">Customer Options</li>
+                                    <li><a asp-area="" asp-controller="Profile" asp-action="UpdateCustomerProfile">Update Profile</a></li>
+                                    <li><a asp-area="" asp-controller="Booking" asp-action="Index">Display My Bookings</a></li>
+                                    <li><a asp-area="" asp-controller="Booking" asp-action="IndexOfPast">Display My Previous Bookings</a></li>
+                                    <li role="separator" class="divider"></li>                                  
+                                }
+                                <li><a><form method="post" asp-controller="Account" asp-action="Logout" asp-anti-forgery="true"><input id="logoutBtn" type="submit" value="Logout" /></form></a></li>
+                            </ul>
+                        </li>
+
+                            
+                            
+                    }
+                    else
+                    {
+                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Sign Up</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="LogIn">Sign In</a></li>
+
+                    }
+                    
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+   
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-6">             
+                <address>
+                    <strong>Nhóm 5</strong><br>
+                    <span class="mobile-hide">Khoa Điện tử - Viễn thông<br>
+                    Đại học Bách Khoa Đà Nẵng<br>
+                    <abbr title="Phone">Phone:</abbr> (84) 96430050</span>
+                </address>
+                
+            </div>
+            <div class="col-md-4 col-sm-4 mobile-hide" id="JoeContact">
+                <p>Designed and Built by Ho Duc Vu</p>
+                <p>Dự án Môn học Công Nghê Phần Mềm</p>
+                <p>&copy;2023-2024, GrandeTravel Website</p>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-6">
+                <div id="social">
+                    <div class="btn-group" role="group" aria-label="...">                        
+                        @* <a href="http://www.twitter.com"><i class="fa fa-twitter socialHover" aria-hidden="true"></i></a>
+                        <a href="http://www.instagram.com"><i class="fa fa-instagram socialHover" aria-hidden="true"></i></a> *@
+                        <a href=""><i class="fa fa-camera-retro socialHover" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100013784401133"><i class="fa fa-facebook-square socialHover" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    
+    <script src="~/lib/jssocials/dist/jssocials.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/devbridge-autocomplete/dist/jquery.autocomplete.js"></script>
+    
+    <script src="~/JS/MyScript.js"></script>
+    @if(ViewBag.Title == "Grande Travel Landing Page" || ViewBag.Title == "Grande Travel Index Page")
+    {
+        <script src="~/JS/AutoCompleteScript.js"></script>
+    }
+
+</body>
+</html>

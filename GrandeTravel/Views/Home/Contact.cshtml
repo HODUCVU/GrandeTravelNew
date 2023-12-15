@@ -1,0 +1,121 @@
+﻿@model GrandeTravel.ViewModels.ContactViewModel
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="bgIndex" class="container"> </div>
+
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="container-fluid" id="contactContent">
+
+    <div class="row">
+        <div class="jumbotron col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <h2 class="text-capitalize text-center titanHeader">Grande Travel Contact</h2>
+            <form asp-action="Contact" asp-controller="Home" method="post" role="form" asp-anti-forgery="true">
+                <div>
+                    <p>If Enquiring about Joining as a Travel Provider, please include your phone number and one of our staff will contact you. </p>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FromAddress"></label>
+                    <input asp-for="FromAddress" class="form-control">
+                    <span class="text-danger" asp-validation-for="FromAddress"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Subject"></label>
+                    <input asp-for="Subject" class="form-control">
+                    <span class="text-danger" asp-validation-for="Subject"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Body"></label>
+                    <textarea asp-for="Body" class="form-control"></textarea>
+                    <span class="text-danger" asp-validation-for="Body"></span>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+   @*  <div class="row">
+        <h3 class="text-center text-capitalize">Our Social Media</h3>
+        <div class="col-md-6 col-sm-6 socialMedia text-center" data-toggle="collapse" data-target="#twitter">
+            <i class="fa fa-twitter ContactUsBtn" aria-hidden="true"></i>
+            <div id="twitter" class="collapse">
+                <a class="twitter-timeline" data-width="350" data-height="345" data-chrome="nofooter" data-theme="light" data-link-color="#2B7BB9" href="https://twitter.com/Australia">Tweets by Australia</a>
+                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 text-center socialMedia" data-toggle="collapse" data-target="#facebook1" id="facebook">
+
+            <i class="fa fa-facebook ContactUsBtn" aria-hidden="true"></i>
+            <div id="facebook1" class="collapse">
+
+                <div class="fb-post" data-href="https://www.facebook.com/profile.php?id=100013784401133" data-width="200" data-show-text="true">
+                    <blockquote cite="https://www.facebook.com/profile.php?id=100013784401133" class="fb-xfbml-parse-ignore">
+                        <p>
+                            Great Company, Amazing Experience.
+                            Once in a Lifetime Experience
+                        </p>Posted by <a href="https://www.facebook.com/HoDucVu">Ho Duc Vu</a> on&nbsp;<a href="https://www.facebook.com/profile.php?id=100013784401133">Wednesday, March 29, 2017</a>
+                    </blockquote>
+
+                </div>
+                &nbsp;
+                <br />
+
+
+
+            </div>
+
+
+        </div>
+
+    </div> *@
+    @* <div class="row">
+        <div class="col-md-12 col-sm-12 socialMedia text-center" id="instagram1" data-toggle="collapse" data-target="#instagram">
+            <i class="fa fa-instagram ContactUsBtn" aria-hidden="true"></i>
+            <div id="instagram" class="collapse">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                            <div style="padding:8px;">
+                                <div style="background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style="background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style="margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BSKfZH1jAKd/" style="color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">#grandetravel</a></p> <p style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by Grande Travel (@@grandetravel) on <time style="font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-03-28T01:48:03+00:00">Mar 27, 2017 at 6:48pm PDT</time></p>
+                            </div>
+                        </blockquote>
+                        <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                            <div style="padding:8px;">
+                                <div style="background:#F8F8F8; line-height:0; margin-top:40px; padding:62.5% 0; text-align:center; width:100%;"> <div style="background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style="margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BSTB7qxgHoE/" style="color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Made it to the 12 Apostles! A long, curvy road to get there but it was worth it! #travelaustralia #lovemylife #naturesart #12apostles</a></p> <p style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by Allison Hebert (@@allyhbert) on <time style="font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-03-31T09:23:48+00:00">Mar 31, 2017 at 2:23am PDT</time></p>
+                            </div>
+                        </blockquote>
+                        <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                            <div style="padding:8px;">
+                                <div style="background:#F8F8F8; line-height:0; margin-top:40px; padding:33.35% 0; text-align:center; width:100%;"> <div style="background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style="margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BSTJNCyghw2/" style="color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Life begins at the end of your comfort zone. #naturephotography #nature #natureshots #aussiehotspots #australia #westernaustralia #perth #perthisok #bluffknoll #sunsets #explore #hiking #travel #travelaustralia</a></p> <p style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by Elise Godwin (@@onewaytripper) on <time style="font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-03-31T10:27:20+00:00">Mar 31, 2017 at 3:27am PDT</time></p>
+                            </div>
+                        </blockquote>
+                        <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div> *@

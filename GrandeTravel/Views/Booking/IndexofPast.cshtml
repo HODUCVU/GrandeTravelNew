@@ -1,0 +1,35 @@
+﻿@model GrandeTravel.ViewModels.DisplayPastBookingsViewModel
+@{
+    ViewData["Title"] = "IndexofPast";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Number of Bookings @Model.total</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>Booking Date</th>
+        <th>Package Name</th>
+        <th>Number of People</th>
+        <th>Total Cost</th>
+        <th>Feedback</th>
+    </tr>
+    @foreach (var item in Model.Bookings)
+    {
+        <tr>
+            <td>@item.BookingDate.ToString("dd/MM/yyyy")</td>
+            <td>@item.TravelPackageName</td>
+            <td>@item.People</td>
+            <td>$@item.TotalCost</td>
+            @if (@item.LeftFeedback != true)
+            {
+                <td><a asp-controller="Feedback" asp-action="Create" asp-route-id="@item.BookingId" class="btn btn-success" role="button">Add a Feedback</a></td>
+            }
+            else
+            {
+                <td>Left Feedback</td>
+            }
+        </tr>
+    }
+</table>
+

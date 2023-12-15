@@ -1,0 +1,21 @@
+﻿@model GrandeTravel.ViewModels.DisplayAllTravelProvidersViewModel
+@{
+    ViewData["Title"] = "TravelProviderList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table table-striped">
+    <tr>
+        <th>Travel Provider</th>
+        <th>Email</th>
+
+    </tr>
+    @foreach (var item in Model.TravelProviders)
+    {
+        <tr>
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+        </tr>
+    }
+</table>
+
